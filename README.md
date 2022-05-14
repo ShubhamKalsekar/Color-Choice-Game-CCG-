@@ -2,11 +2,15 @@
 
 #importing needed modules for our project:
 #import random variable
+
 import random
+
 #Declare computer_score and player_score as variable
 #Show_colors_choices_to_user_to_choose and enter a color:
 #print multiline instruction
 #performstring concatenation of string
+
+
 print("Winning Rules of the Color choice Game as follows: " + "\nEnter a number from one, two, five and match computer choice to Win the computer .")
 computer_score = 0
 player_score = 0
@@ -14,16 +18,16 @@ player_score = 0
 while True:
     print("red = 1 \n Yellow = 2 \n Orange = 3\n Green = 4 \nBlue = 5\n Take a turn: ")
 
-    # take the input from user
+    #take the input from user
     player_choice = int(input("User turn : "))
 
-    # OR id the short-circuit operator if any one of the condition is true then it return True value
+    #OR id the short-circuit operator if any one of the condition is true then it return True value
 
-    # Looping until user enter invalid input
+    #Looping until user enter invalid input
     while player_choice > 5 and player_choice < 1:
         player_choice = int(input("Enter valid input : "))
 
-    # initialize value of choice_col variable corresponding to the player_choice value
+    #initialize value of choice_col variable corresponding to the player_choice value
     if player_choice == 1:
         choice_col = 'red'
     elif player_choice == 2:
@@ -35,7 +39,7 @@ while True:
     else:
         choice_col = 'Blue'
 
-    # print user choice
+    #print user choice
     print("User color choice is: " + choice_col)
     print("\nNow its computer turn to choose a color .....")
 
@@ -56,7 +60,7 @@ while True:
         compu_choice_col = 'Blue'
 
     print("Computer color choice is: " + compu_choice_col)
-    # Condition for Winning
+    #Condition for Winning
     if (choice_col == compu_choice_col):
         player_score += 1
         print("Player_Score: " + str(player_score))
@@ -69,7 +73,7 @@ while True:
     print("Do you want to play again? (Y/N)")
     answer = input()
 
-    # if user input n or N then condition is True
+    #if user input n or N then condition is True
     if answer == 'n' or answer == 'N':
         break
 
@@ -84,4 +88,3 @@ elif computer_score > player_score:
     print("\n<== Computer Win ==> ")
     print("\nPlayer is Defeated")
     print("\n Thanks for playing")
-
