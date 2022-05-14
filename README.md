@@ -1,12 +1,12 @@
 # Color-Choice-Game-CCG- 
 
-# importing needed modules for our project:
-# import random variable
+#importing needed modules for our project:
+#import random variable
 import random
-# Declare computer_score and player_score as variable
-# Show_colors_choices_to_user_to_choose and enter a color:
-# print multiline instruction
-# performstring concatenation of string
+#Declare computer_score and player_score as variable
+#Show_colors_choices_to_user_to_choose and enter a color:
+#print multiline instruction
+#performstring concatenation of string
 print("Winning Rules of the Color choice Game as follows: " + "\nEnter a number from one, two, five and match computer choice to Win the computer .")
 computer_score = 0
 player_score = 0
