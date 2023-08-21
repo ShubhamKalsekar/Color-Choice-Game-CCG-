@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Choice Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .game-container {
+      margin-top: 50px;
+    }
+
+    .color-button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result-container {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #result-message {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #score {
+      font-size: 18px;
+    }
+
+    #play-again {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #play-again:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Color Choice Game 🕹️</h1>
+  
+  <div class="game-container">
+    <p>Choose a color:</p>
+    <button class="color-button" data-color="red">Red</button>
+    <button class="color-button" data-color="yellow">Yellow</button>
+    <button class="color-button" data-color="orange">Orange</button>
+    <button class="color-button" data-color="green">Green</button>
+    <button class="color-button" data-color="blue">Blue</button>
+  </div>
+  
+  <div class="result-container">
+    <p id="result-message"></p>
+    <p id="score">Player: 0, Computer: 0</p>
+    <button id="play-again">Play Again</button>
+  </div>
+  
+  <script>
+    const colorButtons = document.querySelectorAll('.color-button');
+    const resultMessage = document.getElementById('result-message');
+    const scoreDisplay = document.getElementById('score');
+    const playAgainButton = document.getElementById('play-again');
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    colorButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const playerChoice = button.getAttribute('data-color');
+        const computerChoice = getRandomColor();
+
+        showResult(playerChoice, computerChoice);
+        updateScore();
+      });
+    });
+
+    playAgainButton.addEventListener('click', () => {
+      resetGame();
+    });
+
+    function getRandomColor() {
+      const colors = ['red', 'yellow', 'orange', 'green', 'blue'];
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      return colors[randomIndex];
+    }
+
+    function showResult(playerChoice, computerChoice) {
+      if (playerChoice === computerChoice) {
+        resultMessage.textContent = 'It\'s a tie!';
+      } else if (
+        (playerChoice === 'red' && computerChoice === 'green') ||
+        (playerChoice === 'yellow' && computerChoice === 'blue') ||
+        (playerChoice === 'orange' && computerChoice === 'red') ||
+        (playerChoice === 'green' && computerChoice === 'blue') ||
+        (playerChoice === 'blue' && computerChoice === 'yellow')
+      ) {
+        resultMessage.textContent = 'Player wins!';
+        playerScore++;
+      } else {
+        resultMessage.textContent = 'Computer wins!';
+        computerScore++;
+      }
+    }
+
+    function updateScore() {
+      scoreDisplay.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+    }
+
+    function resetGame() {
+      playerScore = 0;
+      computerScore = 0;
+      resultMessage.textContent = '';
+      updateScore();
+    }
+  </script>
+</body>
+</html>
